@@ -26,7 +26,7 @@ const Header = () => {
   return (
     <header className="dark:bg-zinc-900 dark:text-white bg-white text-black w-full flex justify-between items-center px-12 py-4">
       <h1 className={`${fontFamily.className} text-2xl font-bold`}>
-        mindfieldia
+        {"<project name>"}
       </h1>
       <nav>
         <ul className="flex items-center gap-4">
