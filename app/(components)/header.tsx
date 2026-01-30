@@ -1,6 +1,9 @@
+"use client";
 import { Gasoek_One } from "next/font/google";
 import Link from "next/link";
 import React from "react";
+import { GiAbstract007, GiFrance } from "react-icons/gi";
+import { useRouter } from "next/navigation";
 const fontFamily = Gasoek_One({
   subsets: ["latin"],
   display: "swap",
@@ -23,11 +26,14 @@ const navigation = [
 ];
 
 const Header = () => {
+  const router = useRouter();
   return (
     <header className="dark:bg-zinc-900 dark:text-white bg-white text-black w-full flex justify-between items-center px-12 py-4">
-      <h1 className={`${fontFamily.className} text-2xl font-bold`}>
-        {"<project name>"}
-      </h1>
+      <Link href="/">
+        <h1 className={`${fontFamily.className} text-2xl font-bold`}>
+          <GiAbstract007 /> mindfieldia.
+        </h1>
+      </Link>
       <nav>
         <ul className="flex items-center gap-4">
           {navigation.map((item) => (

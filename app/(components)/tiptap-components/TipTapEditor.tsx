@@ -22,6 +22,7 @@ import {
   Type,
 } from "lucide-react";
 import { useState, useEffect } from "react";
+import UniqueID from "@tiptap/extension-unique-id";
 
 // Define available font families
 const fontFamilies = [
@@ -30,8 +31,6 @@ const fontFamilies = [
   { name: "Times New Roman", fontFamily: '"Times New Roman", serif' },
   { name: "Helvetica", fontFamily: "Helvetica, Arial, sans-serif" },
   { name: "Courier New", fontFamily: '"Courier New", monospace' },
-  { name: "Georgia", fontFamily: "Georgia, serif" },
-  { name: "Verdana", fontFamily: "Verdana, sans-serif" },
 ];
 
 // Configure FontFamily extension BEFORE using it
@@ -67,8 +66,14 @@ const Tiptap = () => {
   };
 
   const editor = useEditor({
-    extensions: [StarterKit, TextStyle, FontFamilyExtension],
+    extensions: [
+      StarterKit,
+      TextStyle,
+      FontFamilyExtension,
+      UniqueID.configure({ types: ["heading", "paragraph"] }),
+    ],
     immediatelyRender: false,
+
     content: "",
     editorProps: {
       attributes: {
