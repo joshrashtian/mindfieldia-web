@@ -11,6 +11,7 @@ export const createClient = (cookieStore: ReturnType<typeof cookies>) => {
     {
       cookies: {
         getAll() {
+          // @ts-ignore
           return cookieStore.getAll()
         },
         setAll(cookiesToSet) {

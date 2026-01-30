@@ -4,6 +4,8 @@ import Link from "next/link";
 import React from "react";
 import { GiAbstract007, GiFrance } from "react-icons/gi";
 import { useRouter } from "next/navigation";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { UserIcon } from "lucide-react";
 const fontFamily = Gasoek_One({
   subsets: ["latin"],
   display: "swap",
@@ -34,7 +36,7 @@ const Header = () => {
           <GiAbstract007 /> mindfieldia.
         </h1>
       </Link>
-      <nav>
+      <nav className="flex items-center gap-4">
         <ul className="flex items-center gap-4">
           {navigation.map((item) => (
             <li key={item.href}>
@@ -42,6 +44,13 @@ const Header = () => {
             </li>
           ))}
         </ul>
+        <Link href="/sign-in">
+          <Avatar>
+            <AvatarFallback className="bg-zinc-900 text-white">
+              <UserIcon className="w-4 h-4 text-white" />
+            </AvatarFallback>
+          </Avatar>
+        </Link>
       </nav>
     </header>
   );

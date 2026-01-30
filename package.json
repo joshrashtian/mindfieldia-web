@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@floating-ui/dom": "^1.7.5",
+    "@radix-ui/react-avatar": "^1.1.11",
     "@supabase/ssr": "^0.8.0",
     "@supabase/supabase-js": "^2.93.3",
     "@tiptap/extension-font-family": "^3.17.1",
