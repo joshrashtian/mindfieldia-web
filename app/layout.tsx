@@ -3,6 +3,7 @@ import { DM_Sans } from "next/font/google";
 import "./globals.css";
 import Header from "./(components)/header";
 import { ThemeProvider } from "./(components)/theme-provider";
+import { UserProvider } from "./(contexts)/UserContext";
 
 const dmSans = DM_Sans({
   subsets: ["latin"],
@@ -28,8 +29,10 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <Header />
-          {children}
+          <UserProvider>
+            <Header />
+            {children}
+          </UserProvider>
         </ThemeProvider>
       </body>
     </html>

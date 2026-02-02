@@ -2,10 +2,12 @@
 import { Gasoek_One } from "next/font/google";
 import Link from "next/link";
 import React from "react";
-import { GiAbstract007, GiFrance } from "react-icons/gi";
-import { useRouter } from "next/navigation";
+import { GiAbstract007 } from "react-icons/gi";
+import { useUser } from "@/app/(contexts)/UserContext";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { UserIcon } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { useRouter } from "next/navigation";
 const fontFamily = Gasoek_One({
   subsets: ["latin"],
   display: "swap",
@@ -28,6 +30,7 @@ const navigation = [
 ];
 
 const Header = () => {
+  const { user } = useUser();
   const router = useRouter();
   return (
     <header className="dark:bg-zinc-900 dark:text-white bg-white text-black w-full flex justify-between items-center px-12 py-4">
@@ -45,11 +48,19 @@ const Header = () => {
           ))}
         </ul>
         <Link href="/sign-in">
-          <Avatar>
-            <AvatarFallback className="bg-zinc-900 text-white">
-              <UserIcon className="w-4 h-4 text-white" />
-            </AvatarFallback>
-          </Avatar>
+          {user ? (
+            <Avatar>
+              <AvatarImage src={user?.avatar_url}></AvatarImage>
+
+              <AvatarFallback className="bg-zinc-900 text-white">
+                {user?.full_name.charAt(0)}
+              </AvatarFallback>
+            </Avatar>
+          ) : (
+            <Button onClick={() => router.push("/sign-in")} variant="outline">
+              <p>Sign in</p>
+            </Button>
+          )}
         </Link>
       </nav>
     </header>

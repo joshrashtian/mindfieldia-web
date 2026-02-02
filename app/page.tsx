@@ -1,6 +1,9 @@
+"use client";
 import Image from "next/image";
+import { useUser } from "./(contexts)/UserContext";
 
 export default function Home() {
+  const { user } = useUser();
   return (
     <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-dm-sans  dark:bg-black">
       <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-center gap-3 py-32 px-16  sm:items-start">
@@ -9,6 +12,7 @@ export default function Home() {
           A network for knowledge and thought, for those interested in pursuing
           knowledge and thought.
         </h3>
+        <p className="text-sm text-muted-foreground">{user?.full_name}</p>
       </main>
     </div>
   );
